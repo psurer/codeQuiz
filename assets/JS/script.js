@@ -4,6 +4,7 @@ var gameDuration = initialGameDuration; // in seconds = 1 minute
 const timePenality = 10; // in seconds = 10 
 var winsCounter = 0;
 var loseCounter = 0;
+var nexQuestionIndex = 0;
 var userCanKeepPlaying = false;
 const gameClock = document.getElementById("gameClock");
 const startButton = document.getElementById("start");
@@ -11,6 +12,7 @@ const resetButton = document.querySelector(".reset-button");
 const winScoreElement = document.getElementById('winScore');
 const loseScoreElement = document.getElementById('loseScore');
 const questionContainerElement = document.getElementById('questionContainer');
+
 
 //Object for questions options and valid answers.
 var quizQuestions = [
@@ -86,8 +88,9 @@ function startTimer() {
 function renderQuestions() {
   // Randomly picks question from quizQuestions array
   var questionToUser =
-    quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
-  var currentQuestion = document.getElementById("question");
+    quizQuestions[nexQuestionIndex];
+    nexQuestionIndex++;
+  var currentQuestion = document.getElementById("question"); 
   currentQuestion.innerHTML = questionToUser.question;
   const options = document.getElementById("multipleChoices");
   options.innerHTML = "";
@@ -116,9 +119,13 @@ function checkAnswer(userPick) {
     gameDuration = gameDuration - timePenality;
   }
   updateScore(winsCounter, loseCounter);
+  userCanKeepPlaying = nexQuestionIndex < quizQuestions.length;
 
-  if ( userCanKeepPlaying ) { // If time left, let the user play
+  if ( userCanKeepPlaying ) {
+   // If time left, let the user play
     renderQuestions();
+  } else {
+    endGame();
   }
 }
 
@@ -149,6 +156,8 @@ function stopGameClock(){
 }
 
 function endGame(){
+  winsCounter = 0;
+  loseCounter = 0;
   userCanKeepPlaying = false;
   stopGameClock(timer);
   gameClock.innerText = `You ran out of time!`;
