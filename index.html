@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header-item">Coding Quiz Challenge</h1>
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="main-container-item-justfied">
+          <p>
+            Try to answer the following code-related questions within the time
+            limit. Keep in mind that incorrect answers will penalize your
+            score/Time by 10 seconds!
+          </p>
+        </div>
+        
+        <!-- Start Quiz element -->
+        <button id="start" class="main-container-item">
+          Start Quiz
+        </button>
+      </div>
+
+      <!-- Question Section  -->
+      <section id="questionContainer" class="hidden">
+        <div class="main-container small shadow">
+          <h2 id="question"></h2>
+          <ul id="multipleChoices">
+          </ul>
+        </div>
+     </section>
+
+      <section class="main-container">
+        <div class="main-container-item">
+            <h2>Correct: <span id="winScore">0 </span></h2>
+            <h2>Incorrect: <span id="loseScore">0</span></h2>
+        </div>
+        <button class="main-container-item reset-button">Reset Game</button>
+        </div main-container-item>
+            <h3 id="gameClock"></h3>
+        </div>
+      </section>
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
