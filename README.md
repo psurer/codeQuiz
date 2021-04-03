@@ -10,7 +10,7 @@
 * WHEN the game is over
 * THEN I can save my initials and my score
 
-https://github.com/psurer/codeQuiz
-https://psurer.github.io/codeQuiz/
+### https://github.com/psurer/codeQuiz
+### https://psurer.github.io/codeQuiz/
 
 ![screen shot](./assets/images/screenshot.png)
